@@ -7,3 +7,11 @@
     - name: Display a custom message from Cisco FTD
       debug:
         msg: "Hello from Cisco FTD!"
+        
+    - name: Run the 'show interface ip brief' command
+      ansible.builtin.command: show interface ip brief
+      register: output
+
+    - name: Show the command output
+      ansible.builtin.debug:
+        var: output.stdout
