@@ -1,12 +1,9 @@
 ---
 - name: Get IP interface info from Cisco FTD
   hosts: cisco_ftd
+  gather_facts: no
   become: true  # Use sudo if needed
   tasks:
-    - name: Run the 'uptime' command
-      ansible.builtin.command: uptime
-      register: uptime_output
-
-    - name: Show the command output
-      ansible.builtin.debug:
-        var: uptime_output.stdout
+    - name: Display a custom message from Cisco FTD
+      debug:
+        msg: "Hello from Cisco FTD!"
