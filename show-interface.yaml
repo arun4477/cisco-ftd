@@ -1,0 +1,14 @@
+---
+- name: Get IP interface info from Cisco FTD
+  hosts: cisco_ftd
+  gather_facts: no
+
+  tasks:
+    - name: Run "show interface ip brief"
+      ansible.netcommon.cli_command:
+        command: show interface ip brief
+      register: result
+
+    - name: Print IP interface info
+      debug:
+        var: result.stdout_lines
